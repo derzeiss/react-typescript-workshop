@@ -3,7 +3,7 @@ import { FormEvent, useRef } from "react";
 export const BookEditScreen = () => {
   const ref = useRef<HTMLInputElement>(null);
 
-  const handleSubmit = (ev: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (ev: FormEvent) => {
     ev.preventDefault();
     
     const title = ref.current?.value;
