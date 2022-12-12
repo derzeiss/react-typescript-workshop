@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import { AboutScreen } from "./screens/AboutScreen";
 import { BookDetailScreen } from "./screens/BookDetailScreen";
+import { BookEditScreen } from "./screens/BookEditScreen";
 import { BooksScreen } from "./screens/BookScreen";
 import { ErrorScreen } from "./screens/ErrorScreen";
 
@@ -22,6 +23,10 @@ export const router = createBrowserRouter([
       {
         path: "/books/:isbn",
         element: <BookDetailScreen />,
+      },
+      {
+        path: "/books/:isbn/edit",
+        element: <BookEditScreen />,
       },
     ],
   },

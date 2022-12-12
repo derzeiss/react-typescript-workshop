@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { fetchBook } from "../domain/book/api";
 import { Book } from "../domain/book/Book";
 
@@ -25,6 +25,13 @@ export const BookDetailScreen = () => {
       </small>
       <h2 className="m-top m-bottom">{book.price}</h2>
       <p className="m-top">{book.abstract}</p>
+
+      <Link to="edit" className="m-top">
+        <button>
+          <span>✏️</span>
+          Edit
+        </button>
+      </Link>
     </div>
   );
 };
