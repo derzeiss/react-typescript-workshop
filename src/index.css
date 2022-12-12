@@ -1,30 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
 
 :root {
-  /* h1, primary buttons */
-  --c-brand-primary: #EC7F5B;
-  /* tertiary buttons */
-  --c-brand-secondary: #DB8976;
+  /* h1, button bg */
+  --c-brand-primary: hsl(15deg 79% 64%);
+  /* button:active bg*/
+  --c-brand-primary_active: hsl(12deg 62% 56%);
+  /* button.tertiary color */
+  --c-brand-secondary: hsl(11deg 58% 66%);
+  /* button color */
   --c-white: #fff;
 
   /* text */
   --c-text-primary: #000;
-  /* inputs */
-  --c-text-secondary: #69625C;
-  /* meta text */
-  --c-text-tertiary: #AFABA8;
+  /* input, .error */
+  --c-text-secondary: hsl(28deg 7% 39%);
+  /* .text-meta */
+  --c-text-tertiary: hsl(26deg 4% 67%);
 
-  --c-bg-window: #F9F7F5;
-  --c-bg-button: #FAECE6;
-  --c-bg-input: #EAE7E1;
+  /* <html> */
+  --c-bg-browser: linear-gradient(190deg, hsl(25deg 55% 90%), hsl(24deg 60% 88%));
+  /* app bg */
+  --c-bg-window: hsl(30deg 25% 97%);
+  /* button.secondary, button.secondary:hover, .error */
+  --c-bg-button: hsl(18deg 67% 94%);
+  /* button.secondary:hover */
+  --c-bg-button_active: hsl(17deg 64% 90%);
+  /* input */
+  --c-bg-input: hsl(40deg 18% 90%);
 
+  /* base text */
   --font-base: 16px;
-
-  /* buttons, labels, tertiary text */
+  /* button, label, small, .error */
   --font-xs: .8rem;
-  /* inputs */
+  /* input, .app-header a */
   --font-sm: .9rem;
-  /* h3 */
+  /* button icons */
   --font-lg: 1.25rem;
   /* h2 */
   --font-xl: 1.5rem;
@@ -65,6 +75,10 @@ body {
   color: var(--c-text-primary);
 }
 
+html {
+  background: var(--c-bg-browser);
+}
+
 body {
   position: fixed;
   top: 0;
@@ -91,7 +105,7 @@ body:before {
   background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/0c/IPhone_13_vector.svg');
   background-repeat: no-repeat;
   background-size: contain;
-  background-size: contain;
+  filter: saturate(0) brightness(0.8);
 }
 
 body:after {
@@ -202,6 +216,12 @@ button {
   border-radius: 100px;
   color: var(--c-white);
   background: var(--c-brand-primary);
+  transition: background-color .15s;
+}
+
+button:active {
+  background: var(--c-brand-primary_active);
+  transition: none;
 }
 
 button *:first-child {
@@ -213,10 +233,20 @@ button.secondary {
   background: var(--c-bg-button);
 }
 
+button.secondary:active {
+  background: var(--c-bg-button_active);
+}
+
 button.tertiary {
   color: var(--c-brand-secondary);
   background: none;
-  padding: 0;
+  margin: 0 -.25rem;
+  padding: 0 .25rem;
+  border-radius: 4px;
+}
+
+button.tertiary:active {
+  background: var(--c-bg-button);
 }
 
 input {
@@ -235,10 +265,13 @@ input {
   border-radius: 100px;
   color: var(--c-text-secondary);
   background: var(--c-bg-input);
+  outline: 2px solid transparent;
+  transition: outline .15s;
 }
 
 input:focus {
   outline: 2px solid var(--c-brand-primary);
+  transition: none;
 }
 
 label {
@@ -255,7 +288,7 @@ img {
   display: block;
   max-width: 100%;
   max-height: 100%;
-  margin: 1rem auto;
+  margin: auto;
 }
 
 
@@ -283,6 +316,24 @@ img {
 
 .m-bottom {
   margin-bottom: 1rem;
+}
+
+.icon_entry {
+  display: inline-block;
+  padding-right: .4rem;
+  animation: icon-entry .15s cubic-bezier(0.18, 0.89, 0.02, 1.92);
+}
+
+@keyframes icon-entry {
+  0% {
+    max-width: 0;
+    transform: scale(0)
+  }
+
+  100% {
+    max-width: 30px;
+    transform: scale(1);
+  }
 }
 
 /* ------------------------- */
@@ -337,7 +388,7 @@ img {
 
 .theme-editor {
   position: absolute;
-  top: 3.05rem;
+  top: 3.5rem;
   right: .25rem;
   z-index: 1;
 
@@ -349,11 +400,12 @@ img {
   border-radius: 100px;
   background: var(--c-bg-window);
   transform-origin: center right;
-  transition: transform .15s, background-color .15s;
+  transition: transform .15s;
 }
 
 .theme-editor:hover {
   transform: scale(1.75);
+  transition-timing-function: cubic-bezier(0.18, 0.89, 0.38, 1.45);
 }
 
 .theme-editor button {
@@ -424,6 +476,8 @@ img {
   align-items: stretch;
   justify-content: flex-start;
   gap: .15rem;
+
+  margin: 2rem 0;
 }
 
 /* ------- */
