@@ -3,7 +3,7 @@
 :root {
   /* h1, primary buttons */
   --c-brand-primary: hsl(15deg 79% 64%);
-  --c-brand-primary_active: hsl(12deg 60% 59%);
+  --c-brand-primary_active: hsl(12deg 62% 56%);
   /* tertiary buttons */
   --c-brand-secondary: #DB8976;
   --c-white: #fff;
@@ -253,10 +253,13 @@ input {
   border-radius: 100px;
   color: var(--c-text-secondary);
   background: var(--c-bg-input);
+  outline: 2px solid transparent;
+  transition: outline .15s;
 }
 
 input:focus {
   outline: 2px solid var(--c-brand-primary);
+  transition: none;
 }
 
 label {
