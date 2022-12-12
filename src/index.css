@@ -306,7 +306,7 @@ img {
 .icon_entry {
   display: inline-block;
   padding-right: .4rem;
-  animation: icon-entry .15s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  animation: icon-entry .15s cubic-bezier(0.18, 0.89, 0.02, 1.92);
 }
 
 @keyframes icon-entry {
