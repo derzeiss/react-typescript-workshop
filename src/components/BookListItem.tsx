@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Book } from "../domain/book/Book";
 import { Hideable } from "./Hideable";
 
@@ -16,11 +17,13 @@ export const BookListItem: React.FC<BookListItemProps> = ({ book }) => {
 
   return (
     <div className={`book-list-item ${isFree ? "book-list-item_free" : ""}`}>
-      <h2>
-        {likes >= 5 && <span>⭐ </span>}
-        {isFree && <span>💰 </span>}
-        {book.title}
-      </h2>
+      <Link to={`/books/${book.isbn}`}>
+        <h2>
+          {likes >= 5 && <span>⭐ </span>}
+          {isFree && <span>💰 </span>}
+          {book.title}
+        </h2>
+      </Link>
       <h3>{book.subtitle}</h3>
       <div className="text-meta">by {book.author}</div>
       <button className="secondary" onClick={handleLikeClick}>
