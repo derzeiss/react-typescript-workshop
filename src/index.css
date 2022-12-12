@@ -2,7 +2,8 @@
 
 :root {
   /* h1, primary buttons */
-  --c-brand-primary: #EC7F5B;
+  --c-brand-primary: hsl(15deg 79% 64%);
+  --c-brand-primary_active: hsl(12deg 60% 59%);
   /* tertiary buttons */
   --c-brand-secondary: #DB8976;
   --c-white: #fff;
@@ -15,7 +16,8 @@
   --c-text-tertiary: #AFABA8;
 
   --c-bg-window: #F9F7F5;
-  --c-bg-button: #FAECE6;
+  --c-bg-button: hsl(18deg 67% 94%);
+  --c-bg-button_active: hsl(17deg 64% 90%);
   --c-bg-input: #EAE7E1;
 
   --font-base: 16px;
@@ -202,6 +204,12 @@ button {
   border-radius: 100px;
   color: var(--c-white);
   background: var(--c-brand-primary);
+  transition: background-color .15s;
+}
+
+button:active {
+  background: var(--c-brand-primary_active);
+  transition: none;
 }
 
 button *:first-child {
@@ -213,10 +221,20 @@ button.secondary {
   background: var(--c-bg-button);
 }
 
+button.secondary:active {
+  background: var(--c-bg-button_active);
+}
+
 button.tertiary {
   color: var(--c-brand-secondary);
   background: none;
-  padding: 0;
+  margin: 0 -.25rem;
+  padding: 0 .25rem;
+  border-radius: 4px;
+}
+
+button.tertiary:active {
+  background: var(--c-bg-button);
 }
 
 input {
