@@ -1,33 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
 
 :root {
-  /* h1, primary buttons */
+  /* h1, button bg */
   --c-brand-primary: hsl(15deg 79% 64%);
+  /* button:active bg*/
   --c-brand-primary_active: hsl(12deg 62% 56%);
-  /* tertiary buttons */
-  --c-brand-secondary: #DB8976;
+  /* button.tertiary color */
+  --c-brand-secondary: hsl(11deg 58% 66%);
+  /* button color */
   --c-white: #fff;
 
   /* text */
   --c-text-primary: #000;
-  /* inputs */
-  --c-text-secondary: #69625C;
-  /* meta text */
-  --c-text-tertiary: #AFABA8;
+  /* input, .error */
+  --c-text-secondary: hsl(28deg 7% 39%);
+  /* .text-meta */
+  --c-text-tertiary: hsl(26deg 4% 67%);
 
+  /* <html> */
   --c-bg-browser: linear-gradient(190deg, hsl(25deg 55% 90%), hsl(24deg 60% 88%));
-  --c-bg-window: #F9F7F5;
+  /* app bg */
+  --c-bg-window: hsl(30deg 25% 97%);
+  /* button.secondary, button.secondary:hover, .error */
   --c-bg-button: hsl(18deg 67% 94%);
+  /* button.secondary:hover */
   --c-bg-button_active: hsl(17deg 64% 90%);
-  --c-bg-input: #EAE7E1;
+  /* input */
+  --c-bg-input: hsl(40deg 18% 90%);
 
+  /* base text */
   --font-base: 16px;
-
-  /* buttons, labels, tertiary text */
+  /* button, label, small, .error */
   --font-xs: .8rem;
-  /* inputs */
+  /* input, .app-header a */
   --font-sm: .9rem;
-  /* h3 */
+  /* button icons */
   --font-lg: 1.25rem;
   /* h2 */
   --font-xl: 1.5rem;
