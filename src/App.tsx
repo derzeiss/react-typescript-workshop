@@ -1,15 +1,9 @@
-import { useEffect, useState } from "react";
 import { AppHeader } from "./components/AppHeader";
 import { BookList } from "./components/BookList";
-import { fetchBooks } from "./domain/book/api";
-import { Book } from "./domain/book/Book";
+import { useBooks } from "./domain/book/useBooks";
 
 function App() {
-  const [books, setBooks] = useState<Book[]>([]);
-
-  useEffect(() => {
-    fetchBooks().then((b) => setBooks(b));
-  }, []);
+  const books = useBooks();
 
   return (
     <div className="App">
