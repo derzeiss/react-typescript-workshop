@@ -17,7 +17,7 @@ export const BookListItem: React.FC<BookListItemProps> = ({ book }) => {
   return (
     <div className={`book-list-item ${isFree ? "book-list-item_free" : ""}`}>
       <h2>
-        {likes >= 5 && <span>⭐ </span>}
+        {likes >= 5 && <span className="icon_entry">⭐ </span>}
         {isFree && <span>💰 </span>}
         {book.title}
       </h2>
