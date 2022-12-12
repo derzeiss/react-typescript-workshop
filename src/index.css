@@ -15,6 +15,7 @@
   /* meta text */
   --c-text-tertiary: #AFABA8;
 
+  --c-bg-browser: linear-gradient(190deg, hsl(25deg 55% 90%), hsl(24deg 60% 88%));
   --c-bg-window: #F9F7F5;
   --c-bg-button: hsl(18deg 67% 94%);
   --c-bg-button_active: hsl(17deg 64% 90%);
@@ -67,6 +68,10 @@ body {
   color: var(--c-text-primary);
 }
 
+html {
+  background: var(--c-bg-browser);
+}
+
 body {
   position: fixed;
   top: 0;
@@ -93,7 +98,7 @@ body:before {
   background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/0c/IPhone_13_vector.svg');
   background-repeat: no-repeat;
   background-size: contain;
-  background-size: contain;
+  filter: saturate(0) brightness(0.8);
 }
 
 body:after {
@@ -388,11 +393,12 @@ img {
   border-radius: 100px;
   background: var(--c-bg-window);
   transform-origin: center right;
-  transition: transform .15s, background-color .15s;
+  transition: transform .15s;
 }
 
 .theme-editor:hover {
   transform: scale(1.75);
+  transition-timing-function: cubic-bezier(0.18, 0.89, 0.38, 1.45);
 }
 
 .theme-editor button {
