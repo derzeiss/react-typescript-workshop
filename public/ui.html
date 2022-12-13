@@ -8,8 +8,12 @@
   <title>ui-kit</title>
 
   <style>
+    #root {
+      scroll-behavior: smooth;
+    }
+
     section {
-      margin: 4rem 0;
+      margin: 5rem 0;
     }
 
     section.first {
@@ -17,7 +21,8 @@
     }
 
     h2 {
-      margin-bottom: .25rem;
+      font-size: 2rem;
+      margin-bottom: .5rem;
     }
 
     p:not(.default) {
@@ -84,6 +89,27 @@
       align-items: center;
       gap: .5rem;
     }
+
+    #general:before,
+    #icons:before,
+    #buttons:before,
+    #text-formatting:before,
+    #custom-spacing:before {
+      content: '';
+      display: block;
+      position: relative;
+      height: 200px;
+      margin-top: -200px;
+      visibility: hidden;
+    }
+
+    .app-header a {
+      margin-top: 1rem;
+    }
+
+    .app-header a.active:after {
+      bottom: 0;
+    }
   </style>
 </head>
 
@@ -91,13 +117,18 @@
   <div id="root">
     <header class="app-header">
       <h1>UI-Kit</h1>
-      <p class="m-top">Explore all styles necessary to build the bookmonkey example app.</p>
-
+      <nav>
+        <a href="#general">General</a>
+        <a href="#icons">Icons</a>
+        <a href="#buttons">Buttons</a>
+        <a href="#text-formatting">Text-Formatting</a>
+        <a href="#custom-spacing">Custom-Spacing</a>
+      </nav>
     </header>
 
     <!-- GENERAL -->
     <section class="first">
-      <h2>General</h2>
+      <h2 id="general">General</h2>
       <p>Always apply the component name in <code>kebab-case</code> as <code>className</code>. Most styles are applied
         via these component-specific classes.</p>
       <code class="preview"><pre>
@@ -110,7 +141,7 @@ export const <span class="highlight">ExampleBook</span> = () => {
 
     <!-- ICONS -->
     <section>
-      <h2>Icons</h2>
+      <h2 id="icons">Icons</h2>
       <ul class="text-meta">
         <li>We use unicode Emojis.</li>
         <li>Make sure you wrap every icon in a
@@ -146,7 +177,7 @@ export const <span class="highlight">ExampleBook</span> = () => {
 
     <!-- BUTTONS -->
     <section>
-      <h2>Buttons</h2>
+      <h2 id="buttons">Buttons</h2>
       <h3>Primary</h3>
       <button><span>✌🏼</span> primary</button>
       <code class="preview"><pre>
@@ -174,7 +205,7 @@ export const <span class="highlight">ExampleBook</span> = () => {
 
     <!-- TEXT-FORMATTING -->
     <section>
-      <h2>Text formatting</h2>
+      <h2 id="text-formatting">Text formatting</h2>
       <h3>Paragraphs</h3>
       <p class="default">If you use <code>&lt;p&gt;</code> Tags they will have a big drop-cap letter.</p>
 
@@ -193,8 +224,9 @@ export const <span class="highlight">ExampleBook</span> = () => {
       <div class="error">Use <code>className="error"</code> to display error-messages.</div>
     </section>
 
+    <!-- CUSTOM-SPACING -->
     <section>
-      <h2>Custom spacing</h2>
+      <h2 id="custom-spacing">Custom spacing</h2>
       <p>Most of the time spacing will be handled for you by component-specific styles. If these aren't enough, you can
         add
         <code>m-top</code> or <code>m-bottom</code> to add additional margin to an element.
@@ -207,5 +239,47 @@ export const <span class="highlight">ExampleBook</span> = () => {
     </section>
   </div>
 </body>
+
+<script>
+  const ids = [
+    'general',
+    'icons',
+    'buttons',
+    'text-formatting',
+    'custom-spacing',
+  ]
+
+  // map id to intersecting state
+  let intersections = ids.reduce((obj, id) => {
+    obj[id] = false;
+    return obj
+  }, {});
+
+  let currentlyHighlighted = '';
+
+  const onIntersection = (entries, observer) => {
+    console.log('intersection', entries.map(e => `${e.target.children[0].id}: ${e.isIntersecting}`));
+
+    // update state
+    entries.forEach(e => intersections[e.target.children[0].id] = e.isIntersecting);
+
+    // get first intersection
+    const firstIntersectingId = ids.find(id => intersections[id]);
+
+    // set classNames
+    if (currentlyHighlighted) document.querySelector(`[href="#${currentlyHighlighted}"]`).classList.remove('active');
+    document.querySelector(`[href="#${firstIntersectingId}"]`).classList.add('active');
+
+    currentlyHighlighted = firstIntersectingId;
+  }
+
+  const observer = new IntersectionObserver(onIntersection, {
+    threshold: .001,
+    root: document.getElementById('root'),
+    rootMargin: '-150px 0px 0px 0px',
+  });
+  ids.forEach(id => observer.observe(document.getElementById(id).parentElement))
+
+</script>
 
 </html>
