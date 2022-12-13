@@ -258,8 +258,6 @@ export const <span class="highlight">ExampleBook</span> = () => {
   let currentlyHighlighted = '';
 
   const onIntersection = (entries, observer) => {
-    console.log('intersection', entries.map(e => `${e.target.children[0].id}: ${e.isIntersecting}`));
-
     // update state
     entries.forEach(e => intersections[e.target.children[0].id] = e.isIntersecting);
 
