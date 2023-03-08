@@ -431,9 +431,13 @@ img {
   border: 0.25rem solid var(--c-bg-window);
 }
 
+.theme-editor button + button {
+  margin-left: 1px;
+}
+
 /* ------- */
 
-.hideable {
+.hideable > * {
   animation: fade-in 1s;
 }
 
