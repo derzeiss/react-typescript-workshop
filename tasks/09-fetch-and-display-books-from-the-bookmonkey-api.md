@@ -11,9 +11,7 @@
 
 ```ts
 const fetchSomething = () => {
-  return fetch(url)
-    .then((res) => res.json()) as MyType;
-}
+  return fetch(url).then((res) => res.json()) as MyType;
 };
 ```
 
