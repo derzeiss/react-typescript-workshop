@@ -365,7 +365,7 @@ img {
   top: 0.45rem;
   width: 5.75rem;
   margin-left: -1rem;
-  margin-right: 0.4rem;
+  margin-right: 0.25rem;
 }
 
 .app-header h1 {
@@ -403,7 +403,7 @@ img {
 
 .theme-editor {
   position: absolute;
-  top: 3.5rem;
+  bottom: 1.5rem;
   right: 0.25rem;
   z-index: 1;
 
@@ -441,6 +441,10 @@ img {
   animation: fade-in 1s;
 }
 
+.hideable > p {
+  margin-top: 1rem;
+}
+
 @keyframes fade-in {
   0% {
     opacity: 0;
@@ -453,7 +457,8 @@ img {
 
 /* ------- */
 
-.book-list-item {
+.book-list-item,
+.example-book {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -473,6 +478,13 @@ img {
   background: var(--c-brand-primary);
 }
 
+.book-list-item img,
+.example-book img {
+  width: 220px;
+  height: 220px;
+  object-fit: contain;
+}
+
 .book-list-item a {
   width: 100%;
 }
@@ -485,6 +497,21 @@ img {
   position: absolute;
   top: 0;
   right: 0;
+}
+
+/* ------- */
+
+.counter {
+  text-align: center;
+}
+
+.counter button {
+  display: inline-flex;
+}
+
+.counter h2 {
+  display: inline-block;
+  margin: 1rem;
 }
 
 /* ------- */
@@ -508,13 +535,6 @@ img {
 
 .about-screen h2 {
   margin-bottom: 0.15rem;
-}
-
-.example-book {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  margin-top: 2rem;
 }
 
 /* ------- */
@@ -541,4 +561,18 @@ img {
 .error-screen > * {
   padding: 0.25rem 0.5rem;
   background: var(--c-bg-window);
+}
+
+.App-header img {
+  animation: spin 10s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(-360deg);
+  }
 }
