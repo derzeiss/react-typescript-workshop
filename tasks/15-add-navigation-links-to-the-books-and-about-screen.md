@@ -10,7 +10,6 @@
 
 # Bonus
 
-- Tip: Add `body { overflow-y: scroll; }` in `index.css` to prevent page width jumps when switching routes.
 - Render the `NavLinks` from a `links` array using `.map`:
 
 ```ts
@@ -23,11 +22,5 @@ const links = [
 - Use the primary color from the ThemeContext to additionally highlight the currently active link. Tip: The `NavLink` component's style prop can be a function that receives the `isActive` state as an argument
 
 ```tsx
-<NavLink
-  style={({ isActive }) => {
-    return {};
-  }}
->
-  Books
-</NavLink>
+<NavLink style={({ isActive }) => ({ color: "green" })}>Books</NavLink>
 ```
